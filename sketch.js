@@ -1,5 +1,7 @@
 var balloon,balloonImage1,balloonImage2;
 // create database and position variable here
+var balloonPosition = database.ref('blloon/height');
+balloonPosition.on('value', readPosition, showError);
 
 function preload(){
    bg =loadImage("cityImage.png");
@@ -28,23 +30,48 @@ function draw() {
   if(keyDown(LEFT_ARROW)){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in left direction
+    balloon.x = balloon.x + -10;
   }
   else if(keyDown(RIGHT_ARROW)){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in right direction
+    balloon.x = balloon.x + 10;
   }
   else if(keyDown(UP_ARROW)){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in up direction
+    //updateHeight(0,-10);
+    balloon.y = balloon.y + -10;
+    balloon.scale = balloon.scale - 0.01;
   }
   else if(keyDown(DOWN_ARROW)){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in down direction
+    balloon.y = balloon.y + 10;
+    balloon.scale = balloon.scale + 0.01;
   }
+  
 
   drawSprites();
   fill(0);
   stroke("white");
   textSize(25);
   text("**Use arrow keys to move Hot Air Balloon!",40,40);
+}
+
+function updateHeight(x,y) {
+  database.ref('balloon/height').set({
+    'x':  height.x + x ,
+    'y':  height.y + y
+  })
+}
+
+function readHeight(data){
+  height = data.val();
+  balloon.x = height.x;
+  balloon.y = height.y;
+}
+
+function showError(){
+  console.log('Error in wrinting to the database');
 }

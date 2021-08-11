@@ -12,7 +12,27 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
     
   // Your web app's Firebase configuration
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDtwd5_9BOCAeHfYHQmRx_cTBUp7LCtPcM",
+    authDomain: "hot-air-balloon-10407.firebaseapp.com",
+    databaseURL: "https://hot-air-balloon-10407-default-rtdb.firebaseio.com",
+    projectId: "hot-air-balloon-10407",
+    storageBucket: "hot-air-balloon-10407.appspot.com",
+    messagingSenderId: "1027389381885",
+    appId: "1:1027389381885:web:89b14b243e6db7538eb294"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
   // Initialize Firebase
 
     <link rel="stylesheet" type="text/css" href="style.css"/>
